@@ -32,7 +32,7 @@ function NewBoxForm({ createBox }:NewBoxFormInterface):JSX.Element {
   });
 
   /** Update form input. */
-  function handleChange(evt):void {
+  function handleChange(evt: { target: { name: string; value: string; }; }):void {
     const { name, value } = evt.target as {name:string,value:string};
     setFormData(formData => ({
       ...formData,
@@ -41,7 +41,7 @@ function NewBoxForm({ createBox }:NewBoxFormInterface):JSX.Element {
   }
 
   /** Submit form: call function from parent & clear inputs. */
-  function handleSubmit(evt):void {
+  function handleSubmit(evt: { preventDefault: () => void; }):void {
     evt.preventDefault();
     createBox({ ...formData, id: uuid() });
     setFormData({ height: "", width: "", backgroundColor: "" });
