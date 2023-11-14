@@ -1,3 +1,4 @@
+import BoxInterface from './interface'
 /** Colored box presentation
  *
  * Props:
@@ -10,10 +11,15 @@
  * BoxList -> Box
  */
 
-function Box({ id, width = 5, height = 5, backgroundColor, remove }) {
+
+interface BoxPropInterface extends BoxInterface{
+  remove: Function
+}
+
+function Box({ id, width = 5, height = 5, backgroundColor, remove }:BoxPropInterface):JSX.Element {
 
   /** Remove a box. */
-  function handleRemove() {
+  function handleRemove():void {
     remove(id);
   }
 
